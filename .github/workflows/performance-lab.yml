@@ -19,4 +19,4 @@ jobs:
         uses: ./.github/actions/performance-auditor
         with:
           # Set this to a low number (e.g., 100) to force a failure for testing
-          size_limit_kb: '1000'
+          size_limit_kb: '100'
