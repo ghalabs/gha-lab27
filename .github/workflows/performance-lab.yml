@@ -1,0 +1,22 @@
+name: Performance Auditor
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+      - '.github/actions/performance-auditor/**'
+      - '.github/workflows/performance-lab.yml'
+  workflow_dispatch: # Allows you to run this manually from the Actions tab
+
+jobs:
+  audit-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Performance Audit
+        uses: ./.github/actions/performance-auditor
+        with:
+          # Set this to a low number (e.g., 100) to force a failure for testing
+          size_limit_kb: '1000'
